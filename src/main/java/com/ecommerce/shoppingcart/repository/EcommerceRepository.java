@@ -67,7 +67,7 @@ public class EcommerceRepository {
 		parameters.addValue("first_name", username);
 		parameters.addValue("password", password);
 
-		sql = "select first_name, last_name, password from userdetailsandinfo where first_name = ? and password = ?";
+		sql = "select id, first_name, last_name, password from userdetailsandinfo where first_name = ? and password = ?";
 		userInfo = template.query(sql, new Object[] { username, password }, new UserInfoRowMapper());
 
 		return userInfo;

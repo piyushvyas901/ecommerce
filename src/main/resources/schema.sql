@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS UserDetailsAndInfo ;
 
 CREATE TABLE UserDetailsAndInfo (
   id INT AUTO_INCREMENT  PRIMARY KEY,
-  first_name VARCHAR(250) NOT NULL,
+  first_name VARCHAR(250) NOT NULL UNIQUE,
   last_name VARCHAR(250) NOT NULL,
   password VARCHAR(250) DEFAULT NULL
 );

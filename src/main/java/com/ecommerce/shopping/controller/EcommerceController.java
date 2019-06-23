@@ -22,48 +22,65 @@ import com.ecommerce.shoppingcart.repository.EcommerceRepository;
 @RestController
 @RequestMapping("/ecommerce")
 public class EcommerceController {
-	
-	 @Autowired
-	 EcommerceRepository ecommerceRepo;
 
-	 @Autowired
-	 OrderCartDAO orderCartDAO;
+	@Autowired
+	EcommerceRepository ecommerceRepo;
 
-	 @RequestMapping("/getAllCategories")
-	    @ResponseBody
-	    public List<Category> getAllCategories(){
-	        return ecommerceRepo.getAllCategories();
-	    }
-	 
-	 @RequestMapping("/getAllProducts")
-	    @ResponseBody
-	    public List<Products> getAllProducts(@RequestParam(value = "categoryId", required =false) Integer categoryId){
-		 
-	        return ecommerceRepo.getAllProducts(categoryId);
-	    }
+	@Autowired
+	OrderCartDAO orderCartDAO;
 
-	 @RequestMapping(value = "/addOrder" ,method = RequestMethod.POST)
-	    @ResponseBody
-	    public ResponseEntity<String> getAllProductsPost(@RequestBody OrderCart orderCart){
-		 
-		 
-		 Integer orderId = ecommerceRepo.getId();
-			 orderCart.setOrderId(orderId+1);
-			 OrderCart orderGeneratedId = orderCartDAO.save(orderCart);
-			 return new ResponseEntity<>(
-				      "Order id generated is " + orderGeneratedId, 
-				      HttpStatus.OK);
-	    }
-	 
-	 @RequestMapping(value = "/deleteOrder/{orderId}" ,method = RequestMethod.POST)
-	    @ResponseBody
-	    public ResponseEntity<String> deleteProducts(@PathVariable(value = "orderId") Integer orderId){
-		 
-		 
-		 boolean status = orderCartDAO.delete(orderId);
-			 return new ResponseEntity<>(
-				      "Order id generated is " + status, 
-				      HttpStatus.OK);
-	    }
+	@RequestMapping("/getAllCategories")
+	@ResponseBody
+	public List<Category> getAllCategories() throws Exception {
+		try {
+			return ecommerceRepo.getAllCategories();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@RequestMapping("/getAllProducts")
+	@ResponseBody
+	public List<Products> getAllProducts(@RequestParam(value = "categoryId", required = false) Integer categoryId)
+			throws Exception {
+		try {
+			return ecommerceRepo.getAllProducts(categoryId);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@RequestMapping(value = "/addOrder", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> getAllProductsPost(@RequestBody OrderCart orderCart) throws Exception {
+		try {
+
+			Integer orderId = ecommerceRepo.getId();
+			orderCart.setOrderId(orderId + 1);
+			OrderCart orderGeneratedId = orderCartDAO.save(orderCart);
+			return new ResponseEntity<>("Order id generated is " + orderGeneratedId, HttpStatus.OK);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@RequestMapping(value = "/deleteOrder/{orderId}", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> deleteProducts(@PathVariable(value = "orderId") Integer orderId) throws Exception {
+		try {
+
+			boolean status = orderCartDAO.delete(orderId);
+			return new ResponseEntity<>("Order id generated is " + status, HttpStatus.OK);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }

@@ -19,8 +19,8 @@ public class UserRegistrationController {
 
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<String> registerUser(@RequestBody UserRegistration userRegistration) {
-
+	public ResponseEntity<String> registerUser(@RequestBody UserRegistration userRegistration) throws Exception{
+		try {
 		if (userRegistration.getFirstName() != null && userRegistration.getPassword() != null) {
 			
 			 Integer orderId = userRegistrationRepo.getUserId();
@@ -31,6 +31,9 @@ public class UserRegistrationController {
 			return new ResponseEntity<>( 
 				      "Order id generated is " + userInfoCreated,  
 				      HttpStatus.OK);
+		}
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 		return new ResponseEntity<>( 
 			      "Please provide unique username and password "  ,  

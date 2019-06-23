@@ -45,7 +45,11 @@ public class UserRegistration {
 		this.password = password;
 	}
 	
-	
+	@Override
+	public String toString() {
+		
+		return "User " + this.firstName + " " + this.lastName + " " + "generated successfully";
+	}
 	
 	
 }

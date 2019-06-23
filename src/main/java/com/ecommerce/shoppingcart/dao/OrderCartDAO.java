@@ -9,7 +9,5 @@ public interface OrderCartDAO {
 
 	 public OrderCart save(OrderCart orderCart);
 	 
-	 public void update(OrderCart orderCart);
-	 
-	 public void deleteEmpById(int empId);
+	 public boolean delete(Integer orderId);
 }

@@ -44,16 +44,13 @@ public class OrderCartDAOImpl implements OrderCartDAO {
 	
 	}
 
-	@Override
-	public void update(OrderCart orderCart) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void deleteEmpById(int empId) {
-		// TODO Auto-generated method stub
-		
-	}
+public boolean delete(Integer orderId){
+    String sql = "DELETE FROM ordercart WHERE order_id = ?";
+    Object[] args = new Object[] {orderId};
+
+    return jdbcTemplate.update(sql, args) == 1;
+}
+
 
 }

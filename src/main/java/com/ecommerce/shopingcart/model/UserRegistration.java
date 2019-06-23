@@ -2,6 +2,7 @@ package com.ecommerce.shopingcart.model;
 
 public class UserRegistration {
 
+	private Integer id;
 	private String firstName;
 	private String lastName;
 	private String password;
@@ -11,11 +12,19 @@ public class UserRegistration {
 	}
 	
 	
-	public UserRegistration(String firstName, String lastName, String password) {
+	public UserRegistration(Integer id, String firstName, String lastName, String password) {
 		super();
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public String getFirstName() {
 		return firstName;

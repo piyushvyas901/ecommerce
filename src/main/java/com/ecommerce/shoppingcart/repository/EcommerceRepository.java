@@ -31,11 +31,11 @@ public class EcommerceRepository {
 		String sql = "";
 		List<Products> products = null;
 		if (null != categoryId) {
-			sql = "select product_id,  category_id, product_name  from products where category_id = ?";
+			sql = "select product_id,  category_id, product_name, price  from products where category_id = ?";
 			products = template.query(sql, new Object[] { categoryId }, new ProductRowMapper());
 
 		} else {
-			sql = "select product_id,  category_id, product_name  from products ";
+			sql = "select product_id,  category_id, product_name, price  from products ";
 			products = template.query(sql, new ProductRowMapper());
 
 		}

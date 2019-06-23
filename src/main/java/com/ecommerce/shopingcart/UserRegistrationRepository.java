@@ -9,11 +9,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
+import com.ecommerce.shopingcart.model.UserInfoRowMapper;
 import com.ecommerce.shopingcart.model.UserRegistration;
 
 @Repository
@@ -58,5 +60,21 @@ public class UserRegistrationRepository {
 		return orderId;
 	}
 	
+
+	public UserRegistration getAllAuthenticated(String username) {
+		String sql = "";
+		List<UserRegistration> userInfo = null;
+		UserRegistration user= null;
+		MapSqlParameterSource parameters = new MapSqlParameterSource();
+		parameters.addValue("first_name", username);
+
+		sql = "select id, first_name, last_name, password from userdetailsandinfo where first_name = ? ";
+		userInfo = template.query(sql, new Object[] { username }, new UserInfoRowMapper());
+
+		if (!CollectionUtils.isEmpty(userInfo)) {
+			user = userInfo.get(0);
+		}
+		return user;
+	}
 	
 }

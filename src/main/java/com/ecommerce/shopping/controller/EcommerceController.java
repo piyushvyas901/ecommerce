@@ -1,10 +1,13 @@
 package com.ecommerce.shopping.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,12 +31,39 @@ public class EcommerceController {
 
 	@Autowired
 	OrderCartDAO orderCartDAO;
+	
+	@Autowired
+	AuthenticationManager authentication;
+/*
+	@RequestMapping(value = "/login",method =RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> validateLoginAndSetToken(UserRegistration user) throws Exception {
+		 UsernamePasswordAuthenticationToken authenticationToken =
+			        new UsernamePasswordAuthenticationToken(user.getFirstName(), user.getPassword());
 
+			    try {
+			        Authentication authentication = this.authentication.authenticate(authenticationToken);
+			        SecurityContextHolder.getContext().setAuthentication(authentication);
+			        boolean rememberMe = (loginDTO.isRememberMe() == null) ? false : loginDTO.isRememberMe();
+			        String jwt = tokenProvider.createToken(authentication, rememberMe);
+			        response.addHeader(JWTConfigurer.AUTHORIZATION_HEADER, "Bearer " + jwt);
+			        return ResponseEntity.ok(new JWTToken(jwt));
+			    } catch (AuthenticationException exception) {
+			        return new ResponseEntity<>(Collections.singletonMap("AuthenticationException",exception.getLocalizedMessage()), HttpStatus.UNAUTHORIZED);
+			    }
+	}
+	
+	*/
 	@RequestMapping("/getAllCategories")
 	@ResponseBody
-	public List<Category> getAllCategories() throws Exception {
+	public Map<String, Object> getAllCategories() throws Exception {
 		try {
-			return ecommerceRepo.getAllCategories();
+			List<Category> category = ecommerceRepo.getAllCategories();
+			List<Products> products = ecommerceRepo.getAllProducts(null);
+			Map<String,Object> map = new HashMap<>();
+			map.put("Category", category);
+			map.put("Product", products);
+			return map;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

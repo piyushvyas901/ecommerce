@@ -11,9 +11,11 @@ public class ProductRowMapper implements RowMapper<Products>{
 	public Products mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Products products = new Products();
 		
-		products.setProductId(rs.getInt("product_id"));
-		products.setCategoryId(rs.getInt("category_id"));
-		products.setProductName(rs.getString("product_name"));
+		products.setpId(rs.getInt("product_id"));
+		products.setcId(rs.getInt("category_id"));
+		products.setName(rs.getString("product_name"));
+		products.setPrice(rs.getInt("price"));
+
 		
 		return products;
 	

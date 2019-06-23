@@ -3,34 +3,35 @@ package com.ecommerce.shopingcart.model;
 public class Category {
 
 	
-	private int categoryId;
-	private String productCategory;
+	private int cId;
+	private String name;
 	
 	public Category() {
 		
 	}
-	
-	public Category(int categoryId, String productCategory) {
+
+	public Category(int cId, String name) {
 		super();
-		this.categoryId = categoryId;
-		this.productCategory = productCategory;
+		this.cId = cId;
+		this.name = name;
 	}
 
-	public int getCategoryId() {
-		return categoryId;
+	public int getcId() {
+		return cId;
 	}
 
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
+	public void setcId(int cId) {
+		this.cId = cId;
 	}
 
-	public String getProductCategory() {
-		return productCategory;
+	public String getName() {
+		return name;
 	}
 
-	public void setProductCategory(String productCategory) {
-		this.productCategory = productCategory;
+	public void setName(String name) {
+		this.name = name;
 	}
+	
 	
 	
 }

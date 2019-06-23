@@ -2,38 +2,56 @@ package com.ecommerce.shopingcart.model;
 
 public class Products {
 
-	private int productId;
-	private int categoryId;
-	private String productName;
+	private int pId;
+	private int cId;
+	private String name;
+	private int price;
 	
 	public Products() {
 		
 	}
 	
-	public Products(int productId, int categoryId, String productName) {
+	public Products(int pId, int cId, String name, int price) {
 		super();
-		this.productId = productId;
-		this.categoryId = categoryId;
-		this.productName = productName;
+		this.pId = pId;
+		this.cId = cId;
+		this.name = name;
+		this.price = price;
 	}
-	public int getProductId() {
-		return productId;
+
+	public int getpId() {
+		return pId;
 	}
-	public void setProductId(int productId) {
-		this.productId = productId;
+
+	public void setpId(int pId) {
+		this.pId = pId;
 	}
-	public int getCategoryId() {
-		return categoryId;
+
+	public int getcId() {
+		return cId;
 	}
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
+
+	public void setcId(int cId) {
+		this.cId = cId;
 	}
-	public String getProductName() {
-		return productName;
+
+	public String getName() {
+		return name;
 	}
-	public void setProductName(String productName) {
-		this.productName = productName;
+
+	public void setName(String name) {
+		this.name = name;
 	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	
 	
 	
 	

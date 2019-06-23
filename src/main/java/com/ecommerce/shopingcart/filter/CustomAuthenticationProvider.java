@@ -1,4 +1,4 @@
-package com.ecommerce.shoppingcart.filter;
+package com.ecommerce.shopingcart.filter;
 
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import com.ecommerce.shopingcart.model.UserRegistration;
-import com.ecommerce.shoppingcart.repository.EcommerceRepository;
+import com.ecommerce.shopingcart.repository.EcommerceRepository;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {

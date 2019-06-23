@@ -1,4 +1,4 @@
-package com.ecommerce.shopping.controller;
+package com.ecommerce.shoping.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ecommerce.shopingcart.dao.OrderCartDAO;
 import com.ecommerce.shopingcart.model.Category;
 import com.ecommerce.shopingcart.model.OrderCart;
 import com.ecommerce.shopingcart.model.Products;
-import com.ecommerce.shoppingcart.dao.OrderCartDAO;
-import com.ecommerce.shoppingcart.repository.EcommerceRepository;
+import com.ecommerce.shopingcart.repository.EcommerceRepository;
 
 @RestController
 @RequestMapping("/ecommerce")
@@ -34,36 +34,14 @@ public class EcommerceController {
 	
 	@Autowired
 	AuthenticationManager authentication;
-/*
-	@RequestMapping(value = "/login",method =RequestMethod.POST)
-	@ResponseBody
-	public ResponseEntity<String> validateLoginAndSetToken(UserRegistration user) throws Exception {
-		 UsernamePasswordAuthenticationToken authenticationToken =
-			        new UsernamePasswordAuthenticationToken(user.getFirstName(), user.getPassword());
 
-			    try {
-			        Authentication authentication = this.authentication.authenticate(authenticationToken);
-			        SecurityContextHolder.getContext().setAuthentication(authentication);
-			        boolean rememberMe = (loginDTO.isRememberMe() == null) ? false : loginDTO.isRememberMe();
-			        String jwt = tokenProvider.createToken(authentication, rememberMe);
-			        response.addHeader(JWTConfigurer.AUTHORIZATION_HEADER, "Bearer " + jwt);
-			        return ResponseEntity.ok(new JWTToken(jwt));
-			    } catch (AuthenticationException exception) {
-			        return new ResponseEntity<>(Collections.singletonMap("AuthenticationException",exception.getLocalizedMessage()), HttpStatus.UNAUTHORIZED);
-			    }
-	}
-	
-	*/
 	@RequestMapping("/getAllCategories")
 	@ResponseBody
-	public Map<String, Object> getAllCategories() throws Exception {
+	public List<Category> getAllCategories() throws Exception {
 		try {
 			List<Category> category = ecommerceRepo.getAllCategories();
-			List<Products> products = ecommerceRepo.getAllProducts(null);
-			Map<String,Object> map = new HashMap<>();
-			map.put("Category", category);
-			map.put("Product", products);
-			return map;
+			
+			return category;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

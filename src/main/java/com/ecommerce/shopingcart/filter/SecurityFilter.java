@@ -1,4 +1,4 @@
-package com.ecommerce.shoppingcart.filter;
+package com.ecommerce.shopingcart.filter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +21,7 @@ public class SecurityFilter extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private JWTAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+	
 	@Autowired
 	JWTRequestFilter jwtRequestFilter;
 
@@ -41,7 +42,7 @@ public class SecurityFilter extends WebSecurityConfigurerAdapter {
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);*/
 		
 		  httpSecurity.httpBasic().and().authorizeRequests() .
-		  antMatchers("/getAllItems").permitAll().
+		  //antMatchers("/getAllItems").permitAll().
 		  antMatchers("/ecommerce/**","/authenticate/**").authenticated();
 		  
 		  // Add a filter to validate the tokens with every request

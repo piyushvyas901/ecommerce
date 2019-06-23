@@ -1,4 +1,4 @@
-package com.ecommerce.shoppingcart.filter;
+package com.ecommerce.shopingcart.filter;
 
 import java.io.Serializable;
 import java.util.Date;

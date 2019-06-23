@@ -12,8 +12,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.ecommerce.shopingcart.UserRegistrationRepository;
 import com.ecommerce.shopingcart.model.UserRegistration;
+import com.ecommerce.shopingcart.repository.UserRegistrationRepository;
 
 @Service
 public class JWTUserDetailsService {
@@ -28,7 +28,7 @@ public class JWTUserDetailsService {
 			return new User(userRegister.getFirstName(),
 					userRegister.getPassword(),true , true, true, true, getAuthorities("ROLE_USER"));
 		}
-		return null;
+		return user;
 	}
 	
 	  private Collection<? extends GrantedAuthority> getAuthorities(String role) {

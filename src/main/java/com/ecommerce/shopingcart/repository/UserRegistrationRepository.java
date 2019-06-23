@@ -1,4 +1,4 @@
-package com.ecommerce.shopingcart;
+package com.ecommerce.shopingcart.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

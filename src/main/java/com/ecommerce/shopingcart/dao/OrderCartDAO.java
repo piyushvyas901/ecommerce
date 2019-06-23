@@ -1,4 +1,4 @@
-package com.ecommerce.shoppingcart.dao;
+package com.ecommerce.shopingcart.dao;
 
 import org.springframework.stereotype.Component;
 

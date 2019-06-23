@@ -1,4 +1,4 @@
-package com.ecommerce.shopping.controller;
+package com.ecommerce.shoping.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ecommerce.shopingcart.filter.JWTTokenUtil;
 import com.ecommerce.shopingcart.model.JWTRequest;
 import com.ecommerce.shopingcart.model.JWTResponse;
 import com.ecommerce.shopingcart.service.JWTUserDetailsService;
-import com.ecommerce.shoppingcart.filter.JWTTokenUtil;
 
 @RestController
 @CrossOrigin

@@ -1,4 +1,4 @@
-package com.ecommerce.shopingcart;
+package com.ecommerce.shoping.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommerce.shopingcart.model.UserRegistration;
+import com.ecommerce.shopingcart.repository.UserRegistrationRepository;
 
 @RestController
 public class UserRegistrationController {

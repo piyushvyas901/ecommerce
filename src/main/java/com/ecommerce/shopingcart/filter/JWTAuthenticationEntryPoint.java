@@ -1,4 +1,4 @@
-package com.ecommerce.shoppingcart.filter;
+package com.ecommerce.shopingcart.filter;
 
 import java.io.IOException;
 import java.io.Serializable;
